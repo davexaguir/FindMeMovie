@@ -1,16 +1,64 @@
-import React from "react";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.css";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import Home from "./components/home";
-import MovieDetails from "./components/movie-details";
-import MovieList from "./components/movie-list";
+import About from "./components/movie-details";
+import Packages from "./components/movie-list";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 
 function App() {
-  return <h1>Find Me a Movie</h1>;
+  const packages = [
+    "Activate your Crystals",
+    "Monkey Meditation",
+    "Soak in the Hotsprings",
+    "Hypnotherapy",
+    "Mineral Bath",
+  ];
+
+  return (
+    <div className="App">
+      <Router>
+        <header>
+          <h1 className="title">Welcome to Monty's Mineral SPA</h1>
+
+          <div className="navBar">
+            <Container>
+              <Nav defaultActiveKey="/" variant="tabs" fill>
+                <Nav.Item>
+                  <Nav.Link href="/">
+                    <Link to="/">Home</Link>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey={"aboutPage"}>
+                    <Link to="/movie-details">About Us</Link>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey={"packagesPage"}>
+                    <Link to="/packages">Our Packages</Link>
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Container>
+          </div>
+        </header>
+
+        <div className="display">
+          <Routes>
+            <Route path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route
+              path="/packages"
+              render={() => <Packages packages={packages} />}
+            />
+          </Routes>
+        </div>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
