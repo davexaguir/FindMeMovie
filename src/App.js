@@ -1,52 +1,68 @@
-import React from 'react';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
+
 import './App.css';
-import "bootstrap/dist/css/bootstrap.css";
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Home from './components/home';
-import MovieDetails from './components/movie-details';
-import MovieList from './components/movie-list';
+
+import Home from './components/home'
+import About from './components/movie-details'
+import Packages from './components/movie-list'
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
+
+
+
 
 function App() {
+
+  const packages = ['Activate your Crystals', 'Monkey Meditation', 'Soak in the Hotsprings', 'Hypnotherapy', 'Mineral Bath']
+
+
   return (
-   
-     
-        <Router>
-          <header className='App-header'>
-            <Navbar bg='dark' variant='dark'>
-              <Container>
-                <Nav defaultActiveKey="/" variant="tabs" fill>
-                  <Nav.Item>
-                    <Nav.Link href="/">
-                      <Link to="/">Home</Link>
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item >
-                    <Nav.Link eventKey={"Movie List"}>
-                      <Link to="/movie-list"> Movie List </Link>
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item >
-                    <Nav.Link eventKey={"Movie details"}>
-                      <Link to="/movie-details">Movie details</Link>
-                    </Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Container>
-            </Navbar>
-          </header>
+    <div className="App">
+      <Router>
+        <header>
+          <h1 className="title">Welcome to Monty's Mineral SPA</h1>
 
-          <div className="display">
-            <Route path="/" component={Home} />
-            <Route path="/movie-list" component={MovieList} />
-            <Route path="/movie-details" component={MovieDetails} />
+          <div className="navBar">
+            <Container>
+              <Nav defaultActiveKey="/" variant="tabs" fill>
+                <Nav.Item>
+                  <Nav.Link href="/">
+                    <Link to="/">Home</Link>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item >
+                  <Nav.Link eventKey={"aboutPage"}>
+                    <Link to="/movie-details">About Us</Link>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item >
+                  <Nav.Link eventKey={"packagesPage"}>
+                    <Link to="/packages">Our Packages</Link>
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Container>
+
           </div>
+        </header>
 
-        </Router>
+        <div className="display">
+          <Routes>
+          <Route path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/packages" render={() => <Packages packages={packages} />} />
+          </Routes>
+        </div>
 
+      </Router>
+
+    </div>
   );
 }
 
 export default App;
+
+
+
+
+
