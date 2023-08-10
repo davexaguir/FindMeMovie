@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <Router>
         <header>
-          <h1 className="title">Welcome to Monty's Mineral SPA</h1>
+          <h1 className="title">Welcome to FindMeMovie</h1>
 
           <div className="navBar">
             <Container>
@@ -31,18 +31,29 @@ function App() {
                     <Link to="/">Home</Link>
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey={"aboutPage"}>
-                    <Link to="/movie-details">About Us</Link>
+                <Nav.Item >
+                  <Nav.Link eventKey={"actionPage"}>
+                    <Link to="/actionList"> Action</Link>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item >
+                  <Nav.Link eventKey={"dramaPage"}>
+                    <Link to="/dramaList">Drama</Link>
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey={"packagesPage"}>
-                    <Link to="/packages">Our Packages</Link>
+                  <Nav.Link eventKey={'comedyPage'}>
+                    <Link to="/comedyList">Comedy</Link>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey={'horrorPage'}>
+                    <Link to="/horrorList">Horror</Link>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
             </Container>
+
           </div>
         </header>
 
