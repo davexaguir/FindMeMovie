@@ -2,14 +2,12 @@ import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import NavBar from './NavBar'
 
-
-export default function Action() {
+export default function Comedy() {
     return (
         <>
-        <NavBar userName={"Jonathon"} />
-
-        <div className="actionPage">
-            <div className="actionHeader">
+        <NavBar/>
+        <div className="comedyList">
+            <div className="comedyHeader">
                 <Container>
                     <Card border="info" >
                         <Card.Header className="blockquote mb-0 card-body"> </Card.Header>
