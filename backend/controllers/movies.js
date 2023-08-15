@@ -1,46 +1,31 @@
 const moviesRouter = require("express").Router();
+const db = require("../models");
 
 // Gets the list of all reviewed movies in the system
-moviesRouter.get("/", (req, res) => {
+moviesRouter.get("/", async (req, res) => {
   try {
-    const foundMovies = [
-      {
-        name: "Inception",
-        reviews: [
-          { comment: "Awesome psychological thriller", star_rating: 5 },
-          {
-            comment: "Not sure if I have seen anything better",
-            star_rating: 5,
-          },
-          { comment: "Great but very difficult to follow", star_rating: 4 },
-        ],
-      },
-      {
-        name: "Mission Impossible 8",
-        reviews: [{ comment: "Ok, but not great", star_rating: 3.5 }],
-      },
-    ];
+    let foundMovies = await db.Movie.find();
     res.status(200).json(foundMovies);
   } catch (error) {
     res.status(500).json(error);
   }
 });
 
-moviesRouter.get("/new", (req, res) => {
-  // Display the page that shows form for entering a new move
-});
-
-moviesRouter.post("/", (req, res) => {
-  // Adds the new movie with the info from req.body
-});
-
-// Gets an individual movie by id, and its related comment
-moviesRouter.get("/:id", (req, res) => {
+// Adds a new movie
+moviesRouter.post("/", async (req, res) => {
   try {
-    foundMovie = {
-      name: "Mission Impossible 8",
-      reviews: [{ comment: "Ok, but not great", star_rating: 3.5 }],
-    };
+    console.log(req.body);
+    let newMovie = await db.Movie.create(req.body);
+    res.status(200).json(newMovie);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// Gets an individual movie by id
+moviesRouter.get("/:id", async (req, res) => {
+  try {
+    let foundMovie = await db.Movie.findById(req.params.id);
     res.status(200).json(foundMovie);
   } catch (error) {
     res.status(500).json(error);
@@ -48,28 +33,44 @@ moviesRouter.get("/:id", (req, res) => {
 });
 
 // Route for updating a movie
-moviesRouter.put("/:id", (req, res) => {
-  // Find a movie by name and update it
+moviesRouter.put("/:id", async (req, res) => {
+  // Find a movie by id and update it
+  try {
+    let updatedMovie = await db.Movie.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    console.log(updatedMovie);
+    res.status(200).json(updatedMovie);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 // Route for deleting a movie
-moviesRouter.delete("/:id", (req, res) => {
+moviesRouter.delete("/:id", async (req, res) => {
   // Finds a movie by id and deletes
+  try {
+    const deletedMovie = await db.Movie.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedMovie);
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(`Error deleting restaurant with id: ${req.params.id}`);
+    console.log(error);
+  }
 });
 
-// Route for editing a movie
-moviesRouter.get("/:id/edit", (req, res) => {
-  // Gets the edit page of the movie
-});
-
-// Route for adding a review to an exiting movie
-moviesRouter.post("/:id/review", (req, res) => {
-  // Adds a review on a movie
-});
-
-// Route for posting a review
+// Route for posting a review for a movie
 moviesRouter.post("/:id/review", (req, res) => {
   // Route for posting a review
+});
+
+// Route for updating a review for a given movie
+moviesRouter.put("/:id/review/:reviewId", async (req, res) => {
+  // Updates an existing review
 });
 
 // Route for deleting a review
