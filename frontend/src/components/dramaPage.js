@@ -1,7 +1,8 @@
-import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
 import NavBar from './NavBar'
-import { response } from 'express'
 
 export default function Drama() {
 
@@ -22,32 +23,25 @@ export default function Drama() {
 
     return (
         <>
-        <NavBar/>
-        <div className="dramaPage">
-            <div className="dramaHeader">
-                <Container>
-                    //<Movie movies={movies}/>
-                    {/* <Card border="info" >
-                        <Card.Header className="blockquote mb-0 card-body">About Us</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
+            <NavBar />
+            <div className="dramaPage">
+                <div className="dramaHeader">
+                    <Container>
+                        <Row>
+                            <Col xs={6} md={4}><br></br>
+                                <Image style={{ width: '80%', margin: '0 auto' }} src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg" rounded />
+                            </Col>
+                            <Col xs={2} md={4}><br></br>
+                                <Image style={{ width: '80%', margin: '0 auto' }} src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg" rounded />
+                            </Col>
+                            <Col xs={6} md={4}><br></br>
+                                <Image style={{ width: '80%', margin: '0 auto' }} src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg" rounded />
+                            </Col>
 
-                            </Card.Text>
-                            <Card.Text>
-
-                            </Card.Text>
-                            <Card.Text>
-
-                            </Card.Text>
-                            <Card.Text>
-                             
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Img style={{ width: '50%', margin: '0 auto' }} variant="bottom" src="hotsprings.jpg" />
-                    </Card> */}
-                </Container>
+                        </Row>
+                    </Container>
+                </div>
             </div>
-     </div> 
-     </>
-         )
+        </>
+    )
 }
