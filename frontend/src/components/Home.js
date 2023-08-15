@@ -4,7 +4,7 @@ export default function Home () {
   return(
     <>
     
-      <NavBar userName={"Jonathon"} />
+      <NavBar />
 
 
       <div className="homepage">

@@ -1,8 +1,11 @@
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import NavBar from './NavBar'
 
 export default function Comedy() {
     return (
+        <>
+        <NavBar/>
         <div className="comedyList">
             <div className="comedyHeader">
                 <Container>
@@ -27,5 +30,6 @@ export default function Comedy() {
                 </Container>
             </div>
      </div> 
+     </>
          )
 }

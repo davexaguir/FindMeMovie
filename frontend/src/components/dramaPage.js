@@ -1,9 +1,12 @@
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import NavBar from './NavBar'
 
 export default function Drama() {
     return (
-        <div className="dramaList">
+        <>
+        <NavBar/>
+        <div className="dramaPage">
             <div className="dramaHeader">
                 <Container>
                     <Card border="info" >
@@ -27,5 +30,6 @@ export default function Drama() {
                 </Container>
             </div>
      </div> 
+     </>
          )
 }

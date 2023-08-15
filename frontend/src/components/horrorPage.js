@@ -1,10 +1,15 @@
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import NavBar from './NavBar'
 
 export default function Horror() {
     return (
-        <div className="horrorList">
+        <>
+        <NavBar/>
+        <div className="horrorPage">
             <div className="horrorHeader">
+                
+                
                 <Container>
                     <Card border="info" >
                         <Card.Header className="blockquote mb-0 card-body"> </Card.Header>
@@ -27,5 +32,7 @@ export default function Horror() {
                 </Container>
             </div>
      </div> 
+     </>
+
          )
 }

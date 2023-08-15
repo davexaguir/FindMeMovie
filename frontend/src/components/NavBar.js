@@ -1,10 +1,10 @@
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import {Link} from 'react-router-dom'
-export default function NavBar (props){
+export default function NavBar (){
     return(
       <header>
-            <h1 className="title">Welcome to FindMeMovie, {props.userName}</h1>
+            <h1 className="title">Welcome to FindMeMovie</h1>
   
             <div className="navBar">
               <Container>
@@ -16,22 +16,22 @@ export default function NavBar (props){
                   </Nav.Item>
                   <Nav.Item >
                     <Nav.Link eventKey={"actionPage"}>
-                      <Link to="/actionList"> Action</Link>
+                      <Link to="/actionPage"> Action</Link>
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item >
                     <Nav.Link eventKey={"dramaPage"}>
-                      <Link to="/dramaList">Drama</Link>
+                      <Link to="/dramaPage">Drama</Link>
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey={'comedyPage'}>
-                      <Link to="/comedyList">Comedy</Link>
+                      <Link to="/comedyPage">Comedy</Link>
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey={'horrorPage'}>
-                      <Link to="/horrorList">Horror</Link>
+                      <Link to="/horrorPage">Horror</Link>
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>

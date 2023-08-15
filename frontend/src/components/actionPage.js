@@ -1,9 +1,14 @@
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import NavBar from './NavBar'
+
 
 export default function Action() {
     return (
-        <div className="actionList">
+        <>
+        <NavBar userName={"Jonathon"} />
+
+        <div className="actionPage">
             <div className="actionHeader">
                 <Container>
                     <Card border="info" >
@@ -27,5 +32,6 @@ export default function Action() {
                 </Container>
             </div>
      </div> 
+     </>
          )
 }

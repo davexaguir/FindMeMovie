@@ -21,9 +21,9 @@ function App() {
           
             <Route  path="/" element={<Home/>} />
             <Route path="actionPage" element={<Action/>} />
-            <Route path="dramaPage" component={Drama} />
-            <Route path="comedyPage" component={Comedy} />
-            <Route path="horrorPage" component={Horror} />
+            <Route path="dramaPage" element={<Drama/>} />
+            <Route path="comedyPage" element={<Comedy/>} />
+            <Route path="horrorPage" element={<Horror/>} />
           </Routes>
         </div>
       </Router>
