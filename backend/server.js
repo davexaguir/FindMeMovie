@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 // Movie Route
-const moviesController = require("./controllers/movies");
+const moviesController = require("./controllers/moviesController");
 app.use("/movies", moviesController);
 
 // Listen
