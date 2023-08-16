@@ -36,6 +36,7 @@ const movieSchema = new Schema({
     type: String,
     required: [true, "Movie Description is rquired field!"],
   },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 module.exports = mongoose.model("movies", movieSchema);

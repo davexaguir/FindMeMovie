@@ -25,7 +25,9 @@ moviesRouter.post("/", async (req, res) => {
 // Gets an individual movie by id
 moviesRouter.get("/:id", async (req, res) => {
   try {
-    let foundMovie = await db.Movie.findById(req.params.id);
+    let foundMovie = await db.Movie.findById(req.params.id).populate(
+      "comments"
+    );
     res.status(200).json(foundMovie);
   } catch (error) {
     res.status(500).json(error);
