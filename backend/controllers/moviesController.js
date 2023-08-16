@@ -60,24 +60,45 @@ moviesRouter.delete("/:id", async (req, res) => {
     res.status(200).json(deletedMovie);
   } catch (error) {
     res.status(500).json(error);
-    console.log(`Error deleting restaurant with id: ${req.params.id}`);
+    console.log(`Error deleting movie with id: ${req.params.id}`);
     console.log(error);
   }
 });
 
 // Route for posting a review for a movie
-moviesRouter.post("/:id/review", (req, res) => {
-  // Route for posting a review
+moviesRouter.post("/:id/reviews", async (req, res) => {
+  try {
+    // Find the movie
+    let movie = await db.Movie.findById(req.params.id);
+    console.log(movie);
+    // Create the comment
+    console.log(req.body);
+    let comment = await db.Comment.create(req.body);
+
+    // Add the comment to the movie
+    movie.comments.push(comment);
+    // Save the movie
+    await movie.save();
+
+    res.status(200).json(comment);
+  } catch (error) {
+    console.log(`Error adding review for movie with id: ${req.params.id}`);
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
 
-// Route for updating a review for a given movie
-moviesRouter.put("/:id/review/:reviewId", async (req, res) => {
-  // Updates an existing review
-});
-
-// Route for deleting a review
-moviesRouter.delete("/:id/review/:reviewId", async (req, res) => {
-  // Deletes an existing review
+// Route for deleting an individual review
+moviesRouter.delete("/:id/reviews/:reviewId", async (req, res) => {
+  try {
+    // Deletes an existing review
+    let deletedReview = await db.Comment.findByIdAndDelete(req.params.reviewId);
+    res.status(200).json(deletedReview);
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(`Error deleting review with id: ${req.params.reviewId}`);
+    console.log(error);
+  }
 });
 
 module.exports = moviesRouter;
