@@ -4,7 +4,13 @@ const db = require("../models");
 // Gets the list of all reviewed movies in the system
 moviesRouter.get("/", async (req, res) => {
   try {
-    let foundMovies = await db.Movie.find();
+    let foundMovies = null;
+    console.log(req.query);
+    if (req.query.genre == null) {
+      foundMovies = await db.Movie.find();
+    } else {
+      foundMovies = await db.Movie.find({ genre: req.query.genre });
+    }
     res.status(200).json(foundMovies);
   } catch (error) {
     res.status(500).json(error);
