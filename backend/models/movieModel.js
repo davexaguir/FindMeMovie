@@ -4,16 +4,16 @@ const { Schema } = mongoose;
 const movieSchema = new Schema({
   movie_name: {
     type: String,
-    required: [true, "Movie Name is rquired field!"],
+    required: [true, "Movie Name is a required field!"],
     unique: true,
   },
   release_year: {
     type: Number,
-    required: [true, "Release year is rquired field!"],
+    required: [true, "Release year is a required field!"],
   },
   genre: {
     type: String,
-    required: [true, "Genre is rquired field!"],
+    required: [true, "Genre is a required field!"],
   },
   runtime_minutes: {
     type: Number,
@@ -34,7 +34,7 @@ const movieSchema = new Schema({
   },
   movie_description: {
     type: String,
-    required: [true, "Movie Description is rquired field!"],
+    required: [true, "Movie Description is a required field!"],
   },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
 });
