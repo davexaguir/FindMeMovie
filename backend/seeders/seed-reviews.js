@@ -6,14 +6,14 @@ async function seed() {
   let movie = await db.Movie.findOne({ movie_name: "The Hangover" });
 
   // Create a fake sample comment.
-  let comment = await db.Comment.create({
+  let review = await db.Review.create({
     author: "Famished Fran",
     rating: 9.0,
-    content: "This was hilarious!",
+    content: "Loved, loved, loved it!",
   });
 
   // Add that comment to the movies' comment array.
-  movie.comments.push(comment.id);
+  movie.reviews.push(review.id);
 
   // Save the movie now that it has comment
   await movie.save();

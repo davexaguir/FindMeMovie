@@ -25,9 +25,7 @@ moviesRouter.post("/", async (req, res) => {
 // Gets an individual movie by id
 moviesRouter.get("/:id", async (req, res) => {
   try {
-    let foundMovie = await db.Movie.findById(req.params.id).populate(
-      "comments"
-    );
+    let foundMovie = await db.Movie.findById(req.params.id).populate("reviews");
     res.status(200).json(foundMovie);
   } catch (error) {
     res.status(500).json(error);
@@ -73,14 +71,14 @@ moviesRouter.post("/:id/reviews", async (req, res) => {
     console.log(movie);
     // Create the comment
     console.log(req.body);
-    let comment = await db.Comment.create(req.body);
+    let review = await db.Review.create(req.body);
 
     // Add the comment to the movie
-    movie.comments.push(comment);
+    movie.reviews.push(review);
     // Save the movie
     await movie.save();
 
-    res.status(200).json(comment);
+    res.status(200).json(review);
   } catch (error) {
     console.log(`Error adding review for movie with id: ${req.params.id}`);
     console.log(error);
@@ -92,7 +90,7 @@ moviesRouter.post("/:id/reviews", async (req, res) => {
 moviesRouter.delete("/:id/reviews/:reviewId", async (req, res) => {
   try {
     // Deletes an existing review
-    let deletedReview = await db.Comment.findByIdAndDelete(req.params.reviewId);
+    let deletedReview = await db.Review.findByIdAndDelete(req.params.reviewId);
     res.status(200).json(deletedReview);
   } catch (error) {
     res.status(500).json(error);

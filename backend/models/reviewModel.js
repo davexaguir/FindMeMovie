@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let commentSchema = new mongoose.Schema({
+let reviewSchema = new mongoose.Schema({
   author: {
     type: String,
     default: "Anonymous",
@@ -11,7 +11,7 @@ let commentSchema = new mongoose.Schema({
     required: [true, "Rating is required field!"],
     default: 5.0,
     min: 1.0,
-    max: 10,
+    max: 10.0,
   },
   content: {
     type: String,
@@ -19,4 +19,4 @@ let commentSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model("Review", reviewSchema);

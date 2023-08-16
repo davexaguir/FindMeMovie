@@ -7,4 +7,4 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 module.exports.Movie = require("./movieModel");
-module.exports.Comment = require("./commentModel");
+module.exports.Review = require("./reviewModel");
