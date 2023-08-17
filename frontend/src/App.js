@@ -10,16 +10,11 @@ import Horror from "./components/horrorPage";
 import NewForm from "./components/newMovie";
 
 function App() {
-
-
   return (
     <div className="App">
       <Router>
-        
-
         <div className="display">
           <Routes>
-          
             <Route  path="/" element={<Home/>} />
             <Route path="actionPage" element={<Action/>} />
             <Route path="dramaPage" element={<Drama/>} />
@@ -34,5 +29,3 @@ function App() {
 }
 
 export default App;
-
-

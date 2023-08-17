@@ -1,32 +1,20 @@
-import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
-import NavBar from './NavBar'
-import moviesRouter from '../../../backend/controllers/movies'
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 
-//Pass movies prop to Movie child component
-//movies will be an array of all the movies for that specific genre
-//Look up .map() to map through the list of movies and display the property you need
-export default function Movie() {
-    return (
-        <>
-        <Card border="info" >
-            <Card.Header className="blockquote mb-0 card-body"> </Card.Header>
-            <Card.Body>
-                <Card.Text>
+export default function Movie({ movie }) {
+  console.log(movie);
 
-                </Card.Text>
-                <Card.Text>
-
-                </Card.Text>
-                <Card.Text>
-
-                </Card.Text>
-                <Card.Text>
-
-                </Card.Text>
-            </Card.Body>
-            <Card.Img style={{ width: '50%', margin: '0 auto' }} variant="bottom" src="hotsprings.jpg" />
-        </Card>
-     </>
-         )
+  return (
+    <Col xs={6} md={4}>
+      <br></br>
+      <Image
+        style={{ width: "80%", margin: "0 auto" }}
+        src={movie.image}
+        rounded
+      />
+      <Button variant="primary">Edit Movie</Button>
+      <Button variant="danger">Delete Movie</Button>
+    </Col>
+  );
 }
