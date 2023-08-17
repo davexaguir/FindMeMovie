@@ -1,14 +1,13 @@
 .App {
   text-align: center;
-  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5) ), url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=793&q=80');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 150vh
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5) ), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+  height: 200vh
 }
 
 .App h1 {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   margin-top: 0;
+  color:white
 }
 
 .title {
@@ -91,4 +90,9 @@ li:hover {
 .packages li {
   font-size: 25px;
   margin: 20px;
+}
+
+.App Button{
+  margin-right: 6px;
+  margin-top: 6px;
 }

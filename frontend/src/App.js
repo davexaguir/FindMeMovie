@@ -9,21 +9,16 @@ import Comedy from "./components/comedyPage";
 import Horror from "./components/horrorPage";
 
 function App() {
-
-
   return (
     <div className="App">
       <Router>
-        
-
         <div className="display">
           <Routes>
-          
-            <Route  path="/" element={<Home/>} />
-            <Route path="actionPage" element={<Action/>} />
-            <Route path="dramaPage" element={<Drama/>} />
-            <Route path="comedyPage" element={<Comedy/>} />
-            <Route path="horrorPage" element={<Horror/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="actionPage" element={<Action />} />
+            <Route path="dramaPage" element={<Drama />} />
+            <Route path="comedyPage" element={<Comedy />} />
+            <Route path="horrorPage" element={<Horror />} />
           </Routes>
         </div>
       </Router>
@@ -32,5 +27,3 @@ function App() {
 }
 
 export default App;
-
-
