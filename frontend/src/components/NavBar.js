@@ -34,6 +34,11 @@ export default function NavBar (){
                       <Link to="/horrorPage">Horror</Link>
                     </Nav.Link>
                   </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey={'newMovie'}>
+                      <Link to="/newMovie">Add Movie</Link>
+                    </Nav.Link>
+                  </Nav.Item>
                 </Nav>
               </Container>
   

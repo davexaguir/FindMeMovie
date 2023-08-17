@@ -7,6 +7,7 @@ import Action from "./components/actionPage";
 import Drama from "./components/dramaPage";
 import Comedy from "./components/comedyPage";
 import Horror from "./components/horrorPage";
+import NewForm from "./components/newMovie";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="dramaPage" element={<Drama/>} />
             <Route path="comedyPage" element={<Comedy/>} />
             <Route path="horrorPage" element={<Horror/>} />
+            <Route path="newMovie" element={<NewForm/>}/>
           </Routes>
         </div>
       </Router>

@@ -1,7 +1,7 @@
+import NavBar from "./NavBar"
 
 
-
-export default function new_form (data) {
+export default function NewForm (data) {
     let message = ''
     if(data.message){
       message = (
@@ -11,11 +11,13 @@ export default function new_form (data) {
       )
     }
     return (
-        <Def>
+        <>
+        <NavBar/>
+
             <main>
                 <h1>Add a New Movie</h1>
                 {message}
-                <form method="POST" action="/">
+                <form method="POST" action="/movies">
                     <div className="form-group">
                         <label htmlFor="name">Movie Name</label>
                         <input className="form-control" id="name" name="name" required/>
@@ -43,7 +45,7 @@ export default function new_form (data) {
                     <input className="btn btn-primary" type="submit" value="Add Place"/>
                 </form>
             </main>
-        </Def>
+        </>
     )
 }
 
