@@ -15,8 +15,6 @@ export default function NewForm (data) {
         <NavBar/>
 
             <main>
-                <h1>Add a New Movie</h1>
-                {message}
                 <form method="POST" action="/movies">
                     <div className="form-group">
                         <label htmlFor="name">Movie Name</label>
@@ -32,7 +30,7 @@ export default function NewForm (data) {
                     </div>
                     <div className="form-group">
                         <label htmlFor="state">Run Time</label>
-                        <input className="form-control" id="runTime" name="runTime"/>
+                        <input className="form-control" id="runTime" name="runTime" type='number'></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="cuisines">Main Actor</label>
