@@ -17,6 +17,7 @@ moviesRouter.get("/", async (req, res) => {
   }
 });
 
+
 // Adds a new movie
 moviesRouter.post("/", async (req, res) => {
   try {
