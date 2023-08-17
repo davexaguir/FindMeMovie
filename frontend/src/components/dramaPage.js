@@ -1,64 +1,51 @@
-import Col from "react-bootstrap/Col";
+import Movie from "./Movie";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
 import NavBar from "./NavBar";
+import Row from "react-bootstrap/Row";
 
-export default function Drama() {
-  //const [movies, setMovies ] =useState([])
+import React, { useState, useEffect } from "react";
 
-  //Option 1
-  //add function to get all movies
-  //request to fetch movies
-  //loop through the response and push the movie with the genre of drama into dramaMovies array
-  //console.log( 'movies', movies ) => should display all the dramaMovies
+export default function Comedy() {
+  const [movies, setMovies] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  //Option 2
-  //if you can create a new request to get all movies by genre yay
-  //dramaMovies.push(resp)
-  //console.log( 'movies', movies) => should display all the dramaMovies
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          "http://localhost:3003/movies?genre=Drama"
+        );
+        const jsonData = await response.json();
+        setMovies(jsonData);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    }
 
-  //useEffect that will call the fetch movies request as soon as the page loads
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <>
       <NavBar />
-      <div className="dramaPage">
+      <div className="dramaList">
         <div className="dramaHeader">
           <Container>
             <Row>
-              <Col xs={6} md={4}>
-                <br></br>
-                <Image
-                  style={{ width: "80%", margin: "0 auto" }}
-                  src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg"
-                  rounded
-                />
-              </Col>
-              <Col xs={2} md={4}>
-                <br></br>
-                <Image
-                  style={{ width: "80%", margin: "0 auto" }}
-                  src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg"
-                  rounded
-                />
-              </Col>
-              <Col xs={6} md={4}>
-                <br></br>
-                <Image
-                  style={{ width: "80%", margin: "0 auto" }}
-                  src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg"
-                  rounded
-                />
-              </Col>
-              <Col xs={6} md={4}>
-                <br></br>
-                <Image
-                  style={{ width: "80%", margin: "0 auto" }}
-                  src="https://m.media-amazon.com/images/M/MV5BNWY1NDI0ZTQtMjJiNS00ODY4LWE1NmUtYTkwNzY3NWQ0ZDZjXkEyXkFqcGdeQXVyMTM0NTc2NDgw._V1_.jpg"
-                  rounded
-                />
-              </Col>
+              {movies.map((movie) => {
+                return <Movie key={movie._id} movie={movie} />;
+              })}
             </Row>
           </Container>
         </div>

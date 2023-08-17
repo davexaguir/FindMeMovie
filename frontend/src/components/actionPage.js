@@ -1,35 +1,55 @@
-import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
-import NavBar from './NavBar'
+import Movie from "./Movie";
+import Container from "react-bootstrap/Container";
+import NavBar from "./NavBar";
+import Row from "react-bootstrap/Row";
+
+import React, { useState, useEffect } from "react";
 
 export default function Comedy() {
-    return (
-        <>
-        <NavBar/>
-        <div className="comedyList">
-            <div className="comedyHeader">
-                <Container>
-                    <Card border="info" >
-                        <Card.Header className="blockquote mb-0 card-body"> </Card.Header>
-                        <Card.Body>
-                            <Card.Text>
+  const [movies, setMovies] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-                            </Card.Text>
-                            <Card.Text>
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          "http://localhost:3003/movies?genre=Action"
+        );
+        const jsonData = await response.json();
+        setMovies(jsonData);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    }
 
-                            </Card.Text>
-                            <Card.Text>
+    fetchData();
+  }, []);
 
-                            </Card.Text>
-                            <Card.Text>
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Img style={{ width: '50%', margin: '0 auto' }} variant="bottom" src="hotsprings.jpg" />
-                    </Card>
-                </Container>
-            </div>
-     </div> 
-     </>
-         )
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  return (
+    <>
+      <NavBar />
+      <div className="actionList">
+        <div className="actionHeader">
+          <Container>
+            <Row>
+              {movies.map((movie) => {
+                return <Movie key={movie._id} movie={movie} />;
+              })}
+            </Row>
+          </Container>
+        </div>
+      </div>
+    </>
+  );
 }
