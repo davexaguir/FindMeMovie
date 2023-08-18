@@ -32,14 +32,6 @@ export default function NewForm(data) {
     }
   };
 
-  let message = "";
-  if (data.message) {
-    message = <h4 className="alert-danger">{data.message}</h4>;
-  }
-  return (
-    <>
-      <NavBar />
-
       <main>
         <h1>Add a New Movie</h1>
         {message}
