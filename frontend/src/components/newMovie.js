@@ -2,6 +2,10 @@ import NavBar from "./NavBar";
 import React, { useState } from "react";
 
 export default function NewForm(data) {
+  let message = "";
+  if (data.message) {
+    message = <h4 className="alert-danger">{data.message}</h4>;
+  }
   const [formData, setFormData] = useState({
     movie_name: "",
     movie_description: "",
@@ -32,6 +36,9 @@ export default function NewForm(data) {
     }
   };
 
+  return (
+    <>
+      <NavBar />
       <main>
         <h1>Add a New Movie</h1>
         {message}
