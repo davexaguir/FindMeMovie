@@ -1,4 +1,5 @@
 import NavBar from "./NavBar";
+import Button from "react-bootstrap/esm/Button";
 import React, { useState } from "react";
 
 export default function NewForm(data) {
@@ -30,7 +31,6 @@ export default function NewForm(data) {
 
       const responseData = await response.json();
       console.log("Response from server:", responseData);
-      // Do something with the response data if needed
     } catch (error) {
       console.error("Error sending data:", error);
     }

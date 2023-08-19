@@ -1,9 +1,37 @@
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Movie({ movie }) {
   console.log(movie);
+
+  let navigate = useNavigate();
+  const handleEditclick = () => {
+    let path = `/movies/${movie._id}`;
+    navigate(path, { state: { id: movie._id, name: movie.movie_name } });
+  };
+
+  const handleDeleteClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        `http://localhost:3003/movies/${movie._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const responseData = await response.json();
+      console.log("Response from server:", responseData);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
+  };
 
   return (
     <Col xs={6} md={4}>
@@ -13,8 +41,12 @@ export default function Movie({ movie }) {
         src={movie.image}
         rounded
       />
-      <Button variant="primary">Edit Movie</Button>
-      <Button variant="danger">Delete Movie</Button>
+      <Button variant="primary" onClick={handleEditclick}>
+        Edit Movie
+      </Button>
+      <Button variant="danger" onClick={handleDeleteClick}>
+        Delete Movie
+      </Button>
     </Col>
   );
 }
