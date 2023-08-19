@@ -34,6 +34,8 @@ export default function NewForm(data) {
     } catch (error) {
       console.error("Error sending data:", error);
     }
+
+    window.alert("Movie successfully added!");
   };
 
   return (

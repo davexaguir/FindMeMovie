@@ -12,6 +12,10 @@ export default function Movie({ movie }) {
     navigate(path, { state: { movie: movie } });
   };
 
+  const refreshPage = () => {
+    window.location.reload(true);
+  };
+
   const handleDeleteClick = async (event) => {
     event.preventDefault();
 
@@ -28,6 +32,7 @@ export default function Movie({ movie }) {
 
       const responseData = await response.json();
       console.log("Response from server:", responseData);
+      refreshPage();
     } catch (error) {
       console.error("Error sending data:", error);
     }
