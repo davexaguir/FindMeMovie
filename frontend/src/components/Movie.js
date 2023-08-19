@@ -9,7 +9,7 @@ export default function Movie({ movie }) {
   let navigate = useNavigate();
   const handleEditclick = () => {
     let path = `/movies/${movie._id}`;
-    navigate(path, { state: { id: movie._id, name: movie.movie_name } });
+    navigate(path, { state: { movie: movie } });
   };
 
   const handleDeleteClick = async (event) => {

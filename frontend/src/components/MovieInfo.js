@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 export default function MovieInfo() {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { id, name } = state;
+  const { movie } = state;
 
   const handleHomeClick = () => {
     let path = `/`;
@@ -12,11 +12,13 @@ export default function MovieInfo() {
   };
 
   return (
-    <>
-      <h2>Movie Details - Name: {name}</h2>
+    <div className="infoPage">
+      <h2>Movie Name: {movie.movie_name}</h2>
+      <h3>Genre: {movie.genre}</h3>
+      <h3>Main Actor: {movie.main_actor}</h3>
       <Button variant="primary" onClick={handleHomeClick}>
         Home
       </Button>
-    </>
+    </div>
   );
 }
